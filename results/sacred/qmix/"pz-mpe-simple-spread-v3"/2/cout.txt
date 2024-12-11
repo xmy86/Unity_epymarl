@@ -1,0 +1,85 @@
+[INFO 16:12:35] pymarl Running command 'my_main'
+[INFO 16:12:35] pymarl Started run with ID "2"
+[DEBUG 16:12:35] pymarl Starting Heartbeat
+[DEBUG 16:12:35] my_main Started
+[WARNING 16:12:35] my_main CUDA flag use_cuda was switched OFF automatically because no CUDA devices are available!
+[INFO 16:12:35] my_main Experiment Parameters:
+[INFO 16:12:35] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'add_value_last_step': True,
+    'agent': 'rnn',
+    'agent_output_type': 'q',
+    'batch_size': 32,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'common_reward': True,
+    'double_q': True,
+    'env': 'gymma',
+    'env_args': {   'key': 'pz-mpe-simple-spread-v3',
+                    'pretrained_wrapper': None,
+                    'seed': 497068203,
+                    'time_limit': 25},
+    'epsilon_anneal_time': 50000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'evaluation_epsilon': 0.0,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hidden_dim': 64,
+    'hypergroup': None,
+    'hypernet_embed': 64,
+    'hypernet_layers': 2,
+    'label': 'default_label',
+    'learner': 'q_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 50000,
+    'lr': 0.0005,
+    'mac': 'basic_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'name': 'qmix',
+    'obs_agent_id': True,
+    'obs_individual_obs': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'render': False,
+    'repeat_id': 1,
+    'reward_scalarisation': 'sum',
+    'runner': 'episode',
+    'runner_log_interval': 10000,
+    'save_model': False,
+    'save_model_interval': 50000,
+    'save_replay': False,
+    'seed': 497068203,
+    'standardise_returns': False,
+    'standardise_rewards': True,
+    't_max': 2050000,
+    'target_update_interval_or_tau': 200,
+    'test_greedy': True,
+    'test_interval': 50000,
+    'test_nepisode': 100,
+    'use_cuda': False,
+    'use_rnn': False,
+    'use_tensorboard': False,
+    'use_wandb': False,
+    'wandb_mode': 'offline',
+    'wandb_project': None,
+    'wandb_save_model': False,
+    'wandb_team': None}
+
+/opt/anaconda3/envs/epymarl/lib/python3.10/site-packages/pettingzoo/utils/conversions.py:158: UserWarning: The `action_spaces` dictionary is deprecated. Use the `action_space` function instead.
+  warnings.warn(
+/opt/anaconda3/envs/epymarl/lib/python3.10/site-packages/pettingzoo/utils/conversions.py:144: UserWarning: The `observation_spaces` dictionary is deprecated. Use the `observation_space` function instead.
+  warnings.warn(
+[INFO 16:12:36] my_main Beginning training for 2050000 timesteps
+/opt/anaconda3/envs/epymarl/lib/python3.10/site-packages/gymnasium/utils/passive_env_checker.py:245: UserWarning: [33mWARN: The reward returned by `step()` must be a float, int, np.integer or np.floating, actual type: <class 'list'>[0m
+  logger.warn(
+[INFO 16:12:36] my_main t_env: 25 / 2050000
+[INFO 16:12:36] my_main Estimated time left: 1 seconds. Time passed: 0 seconds

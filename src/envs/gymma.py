@@ -18,6 +18,13 @@ except ImportError:
     )
 
 try:
+    from .unity_wrapper import UnityWrapper
+except ImportError:
+    warnings.warn(
+        "mlagents-envs is not installed, so these environments will not be available! To install, run `pip install mlagents-envs`"
+    )
+
+try:
     from .vmas_wrapper import VMASWrapper  # noqa
 except ImportError:
     warnings.warn(
