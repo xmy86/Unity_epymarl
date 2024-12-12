@@ -4,7 +4,7 @@
 from mlagents_envs.environment import UnityEnvironment
 from mlagents_envs.envs.unity_parallel_env import UnityParallelEnv
 
-unity_env_path = "combat_12_3.app"  # 替换为您的 Unity 可执行文件路径
+unity_env_path = "combat.app"  # 替换为您的 Unity 可执行文件路径
 unity_env = UnityEnvironment(file_name=unity_env_path, no_graphics=False, seed=42)
 env = UnityParallelEnv(unity_env)
 observations = env.reset() # 没有info

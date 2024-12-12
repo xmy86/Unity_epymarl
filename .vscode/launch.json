@@ -5,17 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Current File Debugger",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Main Debugger",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/src/main.py",
             "console": "integratedTerminal",
+            "justMyCode": false,
             "args": [
                 "--config=qmix",
                 "--env-config=gymma",
                 "with",
                 "env_args.time_limit=25",
-                "env_args.key=\"unity_env\""
+                "env_args.key=\"unity_env\"" // unity_env // pz-mpe-simple-spread-v3
             ]
         }
     ]

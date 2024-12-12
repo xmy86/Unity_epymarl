@@ -1,0 +1,132 @@
+[INFO 11:16:51] pymarl Running command 'my_main'
+[INFO 11:16:51] pymarl Started run with ID "33"
+[DEBUG 11:16:51] pymarl Starting Heartbeat
+[DEBUG 11:16:51] my_main Started
+[WARNING 11:16:51] my_main CUDA flag use_cuda was switched OFF automatically because no CUDA devices are available!
+[INFO 11:16:51] my_main Experiment Parameters:
+[INFO 11:16:51] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'add_value_last_step': True,
+    'agent': 'rnn',
+    'agent_output_type': 'q',
+    'batch_size': 32,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'common_reward': True,
+    'double_q': True,
+    'env': 'gymma',
+    'env_args': {   'key': 'unity_env',
+                    'pretrained_wrapper': None,
+                    'seed': 445117574,
+                    'time_limit': 25},
+    'epsilon_anneal_time': 50000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'evaluation_epsilon': 0.0,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hidden_dim': 64,
+    'hypergroup': None,
+    'hypernet_embed': 64,
+    'hypernet_layers': 2,
+    'label': 'default_label',
+    'learner': 'q_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 50000,
+    'lr': 0.0005,
+    'mac': 'basic_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'name': 'qmix',
+    'obs_agent_id': True,
+    'obs_individual_obs': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'render': False,
+    'repeat_id': 1,
+    'reward_scalarisation': 'sum',
+    'runner': 'episode',
+    'runner_log_interval': 10000,
+    'save_model': False,
+    'save_model_interval': 50000,
+    'save_replay': False,
+    'seed': 445117574,
+    'standardise_returns': False,
+    'standardise_rewards': True,
+    't_max': 2050000,
+    'target_update_interval_or_tau': 200,
+    'test_greedy': True,
+    'test_interval': 50000,
+    'test_nepisode': 100,
+    'use_cuda': False,
+    'use_rnn': False,
+    'use_tensorboard': False,
+    'use_wandb': False,
+    'wandb_mode': 'offline',
+    'wandb_project': None,
+    'wandb_save_model': False,
+    'wandb_team': None}
+
+[DEBUG] The true file name is combat
+[DEBUG 11:16:52] mlagents_envs.env_utils The true file name is combat
+[DEBUG] The launch string is /Users/xumingyuan/Documents/repository/Unity_epymarl/combat.app/Contents/MacOS/UnityEnvironment
+[DEBUG 11:16:52] mlagents_envs.env_utils The launch string is /Users/xumingyuan/Documents/repository/Unity_epymarl/combat.app/Contents/MacOS/UnityEnvironment
+[DEBUG] Running with args ['--mlagents-port', '5005']
+[DEBUG 11:16:52] mlagents_envs.env_utils Running with args ['--mlagents-port', '5005']
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=4194304"
+    "memorysetup-bucket-allocator-block-count=1"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=4194304"
+    "memorysetup-profiler-bucket-allocator-block-count=1"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=4194304"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+[INFO] Connected to Unity environment with package version 3.0.0-exp.1 and communication version 1.5.0
+[INFO 11:16:55] mlagents_envs.environment Connected to Unity environment with package version 3.0.0-exp.1 and communication version 1.5.0
+[INFO] Connected new brain: evade_and_collect?team=0
+[INFO 11:16:55] mlagents_envs.environment Connected new brain: evade_and_collect?team=0
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IHDR' 16 13
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IDAT' 41 186
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IHDR' 16 13
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IDAT' 41 186
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IHDR' 16 13
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IDAT' 41 248
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IHDR' 16 13
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IDAT' 41 236
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IHDR' 16 13
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IDAT' 41 248
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IHDR' 16 13
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IDAT' 41 233
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IHDR' 16 13
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IDAT' 41 348
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IHDR' 16 13
+[DEBUG 11:16:55] PIL.PngImagePlugin STREAM b'IDAT' 41 335

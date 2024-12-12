@@ -2,7 +2,7 @@ from collections.abc import Iterable
 import warnings
 
 import gymnasium as gym
-from gymnasium.spaces import flatdim
+from gymnasium.spaces import flatdim, Box
 from gymnasium.wrappers import TimeLimit
 import numpy as np
 
@@ -54,8 +54,10 @@ class GymmaWrapper(MultiAgentEnv):
         self.episode_limit = time_limit
         self._obs = None
         self._info = None
-
-        self.longest_action_space = max(self._env.action_space, key=lambda x: x.n)
+        if(all(isinstance(space, Box) for space in self._env.action_space)):
+            self.longest_action_space = max(self._env.action_space, key=lambda x: x.shape)
+        else:
+            self.longest_action_space = max(self._env.action_space, key=lambda x: x.n)
         self.longest_observation_space = max(
             self._env.observation_space, key=lambda x: x.shape
         )
@@ -64,7 +66,10 @@ class GymmaWrapper(MultiAgentEnv):
         try:
             self._env.unwrapped.seed(self._seed)
         except:
-            self._env.reset(seed=self._seed)
+            try:
+                self._env.reset(seed=self._seed)
+            except:
+                self._env.reset()
 
         self.common_reward = common_reward
         if self.common_reward:
@@ -136,7 +141,10 @@ class GymmaWrapper(MultiAgentEnv):
     def get_avail_agent_actions(self, agent_id):
         """Returns the available actions for agent_id"""
         valid = flatdim(self._env.action_space[agent_id]) * [1]
-        invalid = [0] * (self.longest_action_space.n - len(valid))
+        try: 
+            invalid = [0] * (self.longest_action_space.n - len(valid))
+        except: 
+            invalid = [0] * (self.longest_action_space.shape[0] - len(valid))
         return valid + invalid
 
     def get_total_actions(self):

@@ -19,7 +19,7 @@ class PettingZooWrapper(gym.Env):
         self._env.reset()
 
         self.n_agents = self._env.num_agents
-        self.last_obs = None
+        self.last_obs = self._env.reset() # None
 
         self.action_space = Tuple(
             tuple([self._env.action_spaces[k] for k in self._env.agents])

@@ -1,5 +1,5 @@
 import gymnasium as gym
-from gymnasium.spaces import Tuple
+from gymnasium.spaces import Tuple, Box
 
 from mlagents_envs.environment import UnityEnvironment
 from mlagents_envs.envs.unity_parallel_env import UnityParallelEnv
@@ -11,29 +11,37 @@ class UnityWrapper(gym.Env):
         "render_fps": 5,
     }
 
-    def __init__(self, **kwargs):
-        unity_env = UnityEnvironment(file_name="combat.app", no_graphics=False, seed=42)
-        self._env = UnityParallelEnv(unity_env)
-        self._env.reset()
-
+    def __init__(self, seed=None, **kwargs):
+        self.unity_env = UnityEnvironment(file_name=kwargs['unity_env_path'], 
+                                     no_graphics=not kwargs['graphics'], 
+                                     seed=kwargs['seed'] if seed is None else seed)
+        self._env = UnityParallelEnv(self.unity_env)
+        
         self.n_agents = self._env.num_agents
-        self.last_obs = None
+        self.last_obs = self._env.reset()
 
         self.action_space = Tuple(
-            tuple([self._env.action_spaces[k] for k in self._env.agents])
+            tuple([Box(low=self._env.action_spaces[k].low, 
+                       high=self._env.action_spaces[k].high, 
+                       shape=self._env.action_spaces[k].shape, 
+                       dtype=self._env.action_spaces[k].dtype) for k in self._env.agents])
         )
+
         self.observation_space = Tuple(
-            tuple([self._env.observation_spaces[k] for k in self._env.agents])
+            tuple([Box(low=self._env.observation_spaces[k].low, 
+                       high=self._env.observation_spaces[k].high, 
+                       shape=self._env.observation_spaces[k].shape, 
+                       dtype=self._env.observation_spaces[k].dtype) for k in self._env.agents])
         )
 
     def reset(self, *args, **kwargs):
-        obs, info = self._env.reset(*args, **kwargs)
+        obs = self._env.reset()
         obs = tuple([obs[k] for k in self._env.agents])
         self.last_obs = obs
-        return obs, info
+        return obs
 
     def render(self, mode="human"):
-        return self._env.render(mode)
+        return # self._env.render()
 
     def step(self, actions):
         dict_actions = {}
@@ -70,6 +78,8 @@ gym.register(
     id="unity_env",
     entry_point="envs.unity_wrapper:UnityWrapper",
     kwargs={
-        "unity_env_path": "combat.app"
+        "unity_env_path": "combat.app",
+        "graphics": True,
+        "seed": 42
     }
 )
