@@ -41,24 +41,19 @@ class UnityWrapper(gym.Env):
         return obs
 
     def render(self, mode="human"):
-        return # self._env.render()
+        return self._env.render()
 
     def step(self, actions):
         dict_actions = {}
         for agent, action in zip(self._env.agents, actions):
             dict_actions[agent] = action
 
-        observations, rewards, dones, truncated, infos = self._env.step(dict_actions)
+        observations, rewards, dones, truncated = self._env.step(dict_actions)
 
         obs = tuple([observations[k] for k in self._env.agents])
         rewards = [rewards[k] for k in self._env.agents]
         done = all([dones[k] for k in self._env.agents])
         truncated = all([truncated[k] for k in self._env.agents])
-        info = {
-            f"{k}_{key}": value
-            for k in self._env.agents
-            for key, value in infos[k].items()
-        }
         if done:
             # empty obs and rewards for PZ environments on terminated episode
             assert len(obs) == 0
@@ -67,7 +62,7 @@ class UnityWrapper(gym.Env):
             rewards = [0] * len(obs)
         else:
             self.last_obs = obs
-        return obs, rewards, done, truncated, info
+        return obs, rewards, done, truncated
 
     def close(self):
         return self._env.close()

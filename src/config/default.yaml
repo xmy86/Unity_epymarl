@@ -1,7 +1,7 @@
 # --- Defaults ---
 
 # --- pymarl options ---
-runner: "episode" # Runs 1 env for an episode
+runner: "episode_continue" # Runs 1 env for an episode # episode
 mac: "basic_mac" # Basic controller
 env: "sc2" # Environment name
 common_reward: True  # Run experiment with common reward setup

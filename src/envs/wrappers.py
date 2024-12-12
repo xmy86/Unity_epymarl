@@ -24,12 +24,15 @@ class FlattenObservation(Wrapper):
         self.observation_space = spaces.Tuple(tuple(ma_spaces))
 
     def reset(self, seed=None, options=None):
-        obs, info = self.env.reset(seed=seed, options=options)
-        return self._flatten_obs(obs), info
+        result = self.env.reset(seed=seed, options=options)
+        if not isinstance(result[0], tuple):
+            return self._flatten_obs(result)
+        obs, info = result
+        return self._flatten_obs(obs)
 
     def step(self, actions):
-        obs, rew, done, truncated, info = self.env.step(actions)
-        return self._flatten_obs(obs), rew, done, truncated, info
+        obs, rew, done, truncated = self.env.step(actions)
+        return self._flatten_obs(obs), rew, done, truncated
 
     def _flatten_obs(self, observation):
         return tuple(

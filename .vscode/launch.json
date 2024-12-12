@@ -12,7 +12,22 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Main Debugger",
+            "name": "Unity Debugger",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--config=qmix_continue",
+                "--env-config=gymma_continue",
+                "with",
+                "env_args.time_limit=200",
+                "env_args.key=\"unity_env\""
+            ]
+        },
+        {
+            "name": "MPE Debugger",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/src/main.py",
@@ -22,8 +37,8 @@
                 "--config=qmix",
                 "--env-config=gymma",
                 "with",
-                "env_args.time_limit=25",
-                "env_args.key=\"unity_env\"" // unity_env // pz-mpe-simple-spread-v3
+                "env_args.time_limit=20000",
+                "env_args.key=\"pz-mpe-simple-spread-v3\""
             ]
         }
     ]

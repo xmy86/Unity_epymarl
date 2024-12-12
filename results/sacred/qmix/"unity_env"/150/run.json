@@ -1,0 +1,110 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "/Users/xumingyuan/Documents/repository/Unity_epymarl/src",
+    "dependencies": [
+      "numpy==1.23.5",
+      "PyYAML==5.3.1",
+      "sacred==0.8.7",
+      "torch==2.5.1"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [
+      {
+        "commit": "76bcb698ddee40264211dde24576c23c48b5198b",
+        "dirty": true,
+        "url": "git@github.com:xmy86/Unity_epymarl.git"
+      },
+      {
+        "commit": "76bcb698ddee40264211dde24576c23c48b5198b",
+        "dirty": true,
+        "url": "git@github.com:xmy86/Unity_epymarl.git"
+      },
+      {
+        "commit": "76bcb698ddee40264211dde24576c23c48b5198b",
+        "dirty": true,
+        "url": "git@github.com:xmy86/Unity_epymarl.git"
+      }
+    ],
+    "sources": [
+      [
+        "main.py",
+        "_sources/main_b2cc1db06d11795e4f8cf6a3b0165fa1.py"
+      ],
+      [
+        "run.py",
+        "_sources/run_1dadfc6f22406b6a30318a2be741ff44.py"
+      ],
+      [
+        "utils/logging.py",
+        "_sources/logging_80685d67fab61f6e71e93fbe28085531.py"
+      ]
+    ]
+  },
+  "fail_trace": [
+    "Traceback (most recent call last):\n",
+    "  File \"/opt/anaconda3/envs/epymarl/lib/python3.10/site-packages/sacred/config/captured_function.py\", line 42, in captured_function\n    result = wrapped(*args, **kwargs)\n",
+    "  File \"/Users/xumingyuan/Documents/repository/Unity_epymarl/src/main.py\", line 44, in my_main\n    run(_run, config, _log)\n",
+    "  File \"/Users/xumingyuan/Documents/repository/Unity_epymarl/src/run.py\", line 68, in run\n    run_sequential(args=args, logger=logger)\n",
+    "  File \"/Users/xumingyuan/Documents/repository/Unity_epymarl/src/run.py\", line 202, in run_sequential\n    episode_batch = runner.run(test_mode=False)\n",
+    "  File \"/Users/xumingyuan/Documents/repository/Unity_epymarl/src/runners/episode_runner_continue.py\", line 84, in run\n    _, reward, terminated, truncated = self.env.step(actions[0])\n",
+    "ValueError: too many values to unpack (expected 4)\n"
+  ],
+  "heartbeat": "2024-12-12T11:27:23.151762",
+  "host": {
+    "ENV": {},
+    "cpu": "Apple M3",
+    "hostname": "xmy-mba.local",
+    "os": [
+      "Darwin",
+      "macOS-15.0.1-arm64-arm-64bit"
+    ],
+    "python_version": "3.10.12"
+  },
+  "meta": {
+    "command": "my_main",
+    "config_updates": {
+      "env_args": {
+        "key": "unity_env",
+        "time_limit": 200
+      }
+    },
+    "named_configs": [],
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--id": null,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "env_args.time_limit=200",
+        "env_args.key=\"unity_env\""
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2024-12-12T11:27:16.656958",
+  "status": "FAILED",
+  "stop_time": "2024-12-12T11:27:23.158764"
+}
