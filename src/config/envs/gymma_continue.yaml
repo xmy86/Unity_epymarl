@@ -3,7 +3,7 @@ mac: "basic_mac_continue" # Basic controller
 
 env_args:
   key: null
-  time_limit: 100
+  time_limit: 5000
   pretrained_wrapper: null
 
 test_greedy: True

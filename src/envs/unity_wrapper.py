@@ -46,14 +46,14 @@ class UnityWrapper(gym.Env):
     def step(self, actions):
         dict_actions = {}
         for agent, action in zip(self._env.agents, actions):
-            dict_actions[agent] = action
+            dict_actions[agent] = action * 5
 
         observations, rewards, dones, truncated = self._env.step(dict_actions)
 
         obs = tuple([observations[k] for k in self._env.agents])
         rewards = [rewards[k] for k in self._env.agents]
-        done = all([dones[k] for k in self._env.agents])
-        truncated = all([truncated[k] for k in self._env.agents])
+        done = all([False for _ in self._env.agents]) #
+        truncated = all([False for _ in self._env.agents]) #
         if done:
             # empty obs and rewards for PZ environments on terminated episode
             assert len(obs) == 0
