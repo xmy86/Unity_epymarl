@@ -1,6 +1,8 @@
 import gymnasium as gym
 from gymnasium.spaces import Tuple, Box
 
+import numpy
+
 from mlagents_envs.environment import UnityEnvironment
 from mlagents_envs.envs.unity_parallel_env import UnityParallelEnv
 
@@ -40,15 +42,15 @@ class UnityWrapper(gym.Env):
         self.last_obs = obs
         return obs
 
-    def render(self, mode="human"):
+    def render(self):
         return self._env.render()
 
     def step(self, actions):
         dict_actions = {}
         for agent, action in zip(self._env.agents, actions):
-            dict_actions[agent] = action * 5
+            dict_actions[agent] = numpy.clip(action*5, -1, 1)
 
-        observations, rewards, dones, truncated = self._env.step(dict_actions)
+        observations, rewards, _, truncated = self._env.step(dict_actions)
 
         obs = tuple([observations[k] for k in self._env.agents])
         rewards = [rewards[k] for k in self._env.agents]
@@ -73,7 +75,7 @@ gym.register(
     id="unity_env",
     entry_point="envs.unity_wrapper:UnityWrapper",
     kwargs={
-        "unity_env_path": "combat.app",
+        "unity_env_path": "Combat_win/UnityEnvironment.exe",
         "graphics": True,
         "seed": 42
     }
